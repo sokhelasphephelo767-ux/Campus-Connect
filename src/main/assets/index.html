@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduCircle — Where Learning Connects</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+    darkMode: 'class',
+    theme: {
+        extend: {
+        colors: {
+        brand: {
+        50: '#eef2ff',
+        100: '#e0e7ff',
+        500: '#6366f1',
+        600: '#4f46e5',
+        700: '#4338ca',
+        800: '#3730a3',
+        900: '#312e81'
+    }
+    }
+    }
+    }
+}
+</script>
+<!-- FontAwesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Inter', sans-serif; }
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+.dark ::-webkit-scrollbar-thumb { background: #475569; }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+</style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
+
+<!-- HOME / WELCOME LANDING PAGE (Shown when user is not authenticated) -->
+<div id="welcome-page" class="min-h-screen flex flex-col justify-between bg-gradient-to-b from-slate-900 via-brand-950 to-slate-900 text-white relative overflow-hidden">
+<!-- Decorative Background Glows -->
+<div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-600/20 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute bottom-10 right-10 w-80 h-80 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+<!-- Top Header -->
+<header class="max-w-7xl w-full mx-auto px-6 py-6 flex items-center justify-between z-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-500 to-indigo-400 flex items-center justify-center text-white shadow-lg">
+<i class="fa-solid fa-circle-nodes text-lg"></i>
+</div>
+<div>
+<span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-indigo-200 to-indigo-400 bg-clip-text text-transparent">EduCircle</span>
+<span class="text-[10px] px-2 py-0.5 rounded-full bg-brand-500/30 text-indigo-300 font-semibold border border-indigo-500/30 ml-2">South Africa</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button onclick="openLoginModal()" class="px-4 py-2 text-sm font-semibold text-slate-300 hover:text-white transition">Sign In</button>
+<button onclick="openRegisterModal()" class="px-5 py-2.5 bg-brand-600 hover:bg-brand-500 text-white text-sm font-bold rounded-xl shadow-lg shadow-brand-600/30 transition">Get Started</button>
+</div>
+</header>
+
+<!-- Hero Section -->
+<main class="max-w-5xl mx-auto px-6 py-12 md:py-20 text-center z-10 space-y-8 flex-1 flex flex-col justify-center">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-indigo-200 text-xs font-semibold border border-white/10 mx-auto">
+<i class="fa-solid fa-sparkles text-amber-300"></i> Empowering Students Across UJ, UP, UCT, UNISA & TVETs
+</div>
+
+<h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight">
+Where Learning Connects <br>
+<span class="bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400 bg-clip-text text-transparent">Across South Africa</span>
+</h1>
+
+<p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+Access verified past question papers, comprehensive study notes, WhatsApp-style module circles, and AI-powered study tools built for SA curricula.
+</p>
+
+<div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+<button onclick="openRegisterModal()" class="px-8 py-4 bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold rounded-2xl shadow-xl shadow-brand-600/40 transition flex items-center gap-3 text-base">
+<i class="fa-solid fa-user-plus"></i> Create Student Account
+</button>
+<button onclick="openLoginModal()" class="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-2xl backdrop-blur-md border border-white/20 transition flex items-center gap-3 text-base">
+<i class="fa-solid fa-right-to-bracket"></i> Login to Account
+</button>
+</div>
+
+<!-- Feature Pills Grid -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-12 max-w-4xl mx-auto text-left">
+<div class="p-4 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 space-y-1">
+<div class="text-brand-400 font-bold text-lg"><i class="fa-solid fa-file-lines"></i> 1,400+</div>
+<div class="text-xs text-slate-400">Past Papers & Notes</div>
+</div>
+<div class="p-4 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 space-y-1">
+<div class="text-emerald-400 font-bold text-lg"><i class="fa-solid fa-users"></i> 38+</div>
+<div class="text-xs text-slate-400">Active Study Circles</div>
+</div>
+<div class="p-4 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 space-y-1">
+<div class="text-purple-400 font-bold text-lg"><i class="fa-solid fa-brain"></i> AI OCR</div>
+<div class="text-xs text-slate-400">Scan & Summarize</div>
+</div>
+<div class="p-4 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 space-y-1">
+<div class="text-rose-400 font-bold text-lg"><i class="fa-solid fa-calendar-days"></i> Timetable</div>
+<div class="text-xs text-slate-400">Exam Deadlines</div>
+</div>
+</div>
+</main>
+
+<!-- Footer -->
+<footer class="max-w-7xl w-full mx-auto px-6 py-6 border-t border-white/10 text-center text-xs text-slate-400 z-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+<div>© 2026 EduCircle (Pty) Ltd. Built for South African Students.</div>
+<div class="flex gap-4">
+<a href="#" class="hover:text-white transition">Privacy Policy</a>
+<a href="#" class="hover:text-white transition">Terms of Service</a>
+<a href="#" class="hover:text-white transition">Support</a>
+</div>
+</footer>
+</div>
+
+<!-- LOGIN MODAL -->
+<div id="login-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 backdrop-blur-sm p-4 hidden">
+<div class="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl w-full max-w-md border border-slate-200 dark:border-slate-700 overflow-hidden animate-fade-in">
+<div class="bg-gradient-to-r from-brand-600 to-indigo-600 p-6 text-white text-center relative">
+<button onclick="closeLoginModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+<div class="inline-flex items-center justify-center w-12 h-12 bg-white/10 rounded-full mb-2 backdrop-blur-md">
+<i class="fa-solid fa-right-to-bracket text-xl text-white"></i>
+</div>
+<h3 class="text-xl font-bold">Welcome Back</h3>
+<p class="text-indigo-100 text-xs mt-1">Sign in to your EduCircle student account</p>
+</div>
+<form id="login-form" onsubmit="handleLogin(event)" class="p-6 space-y-4">
+<div>
+<label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">Email or Phone *</label>
+<input type="text" id="login-contact" required placeholder="student@myuct.ac.za" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-transparent text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+</div>
+<div>
+<label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">Password *</label>
+<input type="password" id="login-pass" required placeholder="••••••••" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-transparent text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+</div>
+<div class="flex items-center justify-between text-xs text-slate-500">
+<label class="flex items-center gap-2"><input type="checkbox" class="rounded text-brand-600"> Remember me</label>
+<a href="#" class="text-brand-600 dark:text-brand-400 font-semibold hover:underline">Forgot password?</a>
+</div>
+<button type="submit" class="w-full py-3 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl shadow-md transition text-sm">
+Sign In & Continue
+</button>
+<div class="text-center pt-2 text-xs text-slate-500">
+Don't have an account? <button type="button" onclick="switchToRegisterFromLogin()" class="text-brand-600 dark:text-brand-400 font-bold hover:underline">Register here</button>
+</div>
+</form>
+</div>
+</div>
+
+<!-- ONBOARDING & PROFILE SETUP MODAL (Registration) -->
+<div id="onboarding-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 backdrop-blur-sm p-4 overflow-y-auto hidden">
+<div class="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl w-full max-w-2xl border border-slate-200 dark:border-slate-700 overflow-hidden animate-fade-in my-8 relative">
+<button onclick="closeRegisterModal()" class="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white"><i class="fa-solid fa-xmark"></i></button>
+<div class="bg-gradient-to-r from-brand-600 to-indigo-700 p-6 text-white text-center">
+<div class="inline-flex items-center justify-center w-14 h-14 bg-white/10 rounded-full mb-3 backdrop-blur-md">
+<i class="fa-solid fa-graduation-cap text-2xl text-white"></i>
+</div>
+<h1 class="text-2xl font-bold tracking-tight">Create EduCircle Profile</h1>
+<p class="text-indigo-100 text-sm mt-1">Join South Africa's premier student academic network.</p>
+</div>
+
+<!-- Form Steps -->
+<form id="onboarding-form" class="p-6 md:p-8 space-y-6">
+<!-- Step 1: Basic Credentials -->
+<div id="step-1" class="space-y-4">
+<div class="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-700">
+<h2 class="text-lg font-semibold text-slate-900 dark:text-white flex items-center gap-2">
+<span class="w-7 h-7 rounded-full bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-400 text-sm flex items-center justify-center font-bold">1</span>
+Personal Information
+</h2>
+<span class="text-xs text-slate-400 font-medium">Step 1 of 2</span>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">Full Name *</label>
+<input type="text" id="reg-name" required placeholder="e.g. Sipho Dlamini" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-transparent text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm">
+</div>
+<div>
+<label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">Email or Phone *</label>
+<input type="text" id="reg-contact" required placeholder="student@myuct.ac.za or 0821234567" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-transparent text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm">
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">Password *</label>
+<input type="password" id="reg-pass" required placeholder="••••••••" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-transparent text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm">
+</div>
+<div>
+<label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">Province *</label>
+<select id="reg-province" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm">
+<option value="">Select Province</option>
+<option value="Gauteng">Gauteng</option>
+<option value="Western Cape">Western Cape</option>
+<option value="KwaZulu-Natal">KwaZulu-Natal</option>
+<option value="Eastern Cape">Eastern Cape</option>
+<option value="Free State">Free State</option>
+<option value="Limpopo">Limpopo</option>
+<option value="Mpumalanga">Mpumalanga</option>
+<option value="North West">North West</option>
+<option value="Northern Cape">Northern Cape</option>
+</select>
+</div>
+</div>
+
+<div class="flex justify-end pt-4">
+<button type="button" onclick="nextOnboardingStep(2)" class="px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl shadow-md transition flex items-center gap-2 text-sm">
+Next: Academic Profile <i class="fa-solid fa-arrow-right"></i>
+</button>
+</div>
+</div>
+
+<!-- Step 2: Academic Profile Customization -->
+<div id="step-2" class="space-y-4 hidden">
+<div class="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-700">
+<h2 class="text-lg font-semibold text-slate-900 dark:text-white flex items-center gap-2">
+<span class="w-7 h-7 rounded-full bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-400 text-sm flex items-center justify-center font-bold">2</span>
+Academic Details
+</h2>
+<span class="text-xs text-slate-400 font-medium">Step 2 of 2</span>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">Institution / University *</label>
+<select id="reg-institution" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm">
+<option value="">Select Institution</option>
+<option value="University of Pretoria (UP)">University of Pretoria (UP)</option>
+<option value="University of Johannesburg (UJ)">University of Johannesburg (UJ)</option>
+<option value="University of Cape Town (UCT)">University of Cape Town (UCT)</option>
+<option value="University of KwaZulu-Natal (UKZN)">University of KwaZulu-Natal (UKZN)</option>
+<option value="Tshwane University of Technology (TUT)">Tshwane University of Technology (TUT)</option>
+<option value="UNISA">UNISA</option>
+<option value="Durban University of Technology (DUT)">Durban University of Technology (DUT)</option>
+<option value="TVET College (General)">TVET College (General)</option>
+<option value="Private Institution (Boston/Damelin/etc.)">Private Institution (Boston/Damelin/etc.)</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">Faculty *</label>
+<select id="reg-faculty" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm">
+<option value="">Select Faculty</option>
+<option value="Commerce">Commerce & Management</option>
+<option value="Science">Science</option>
+<option value="Engineering">Engineering & Built Environment</option>
+<option value="Humanities">Humanities & Arts</option>
+<option value="Law">Law</option>
+<option value="ICT & Tech">ICT & Tech</option>
+<option value="Health Sciences">Health Sciences</option>
+<option value="Education">Education</option>
+</select>
+</div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">Course / Degree *</label>
+<input type="text" id="reg-course" required placeholder="e.g. BCom Accounting / BSc IT" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-transparent text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm">
+</div>
+<div>
+<label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">Year of Study *</label>
+<select id="reg-year" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm">
+<option value="1st Year">1st Year</option>
+<option value="2nd Year">2nd Year</option>
+<option value="3rd Year">3rd Year</option>
+<option value="4th Year / Honours">4th Year / Honours</option>
+<option value="Postgraduate / Masters">Postgraduate / Masters</option>
+</select>
+</div>
+</div>
+
+<div class="flex items-center justify-between pt-4">
+<button type="button" onclick="nextOnboardingStep(1)" class="px-5 py-2.5 border border-slate-300 dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-700 font-medium rounded-xl transition text-slate-700 dark:text-slate-300 flex items-center gap-2 text-sm">
+<i class="fa-solid fa-arrow-left"></i> Back
+</button>
+<button type="submit" class="px-7 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-lg transition flex items-center gap-2 text-sm">
+<i class="fa-solid fa-check"></i> Complete Profile & Enter App
+</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+
+<!-- MAIN APP SHELL (Hidden until authenticated) -->
+<div id="app-container" class="flex-1 flex flex-col hidden">
+
+<!-- Top Navigation Header -->
+<header class="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-30 shadow-xs">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<!-- App Logo & Branding -->
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center text-white shadow-md">
+<i class="fa-solid fa-circle-nodes text-lg"></i>
+</div>
+<div>
+<span class="text-xl font-bold bg-gradient-to-r from-brand-600 to-indigo-600 bg-clip-text text-transparent">EduCircle</span>
+<span class="hidden sm:inline-block ml-2 text-xs px-2 py-0.5 rounded-full bg-brand-50 dark:bg-brand-900/40 text-brand-600 dark:text-brand-300 font-medium border border-brand-200 dark:border-brand-800">South Africa</span>
+</div>
+</div>
+
+<!-- Desktop Nav Links -->
+<nav class="hidden md:flex items-center gap-1">
+<button onclick="switchTab('dashboard')" class="nav-btn px-3 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition flex items-center gap-2 active-nav" data-target="dashboard">
+<i class="fa-solid fa-house text-brand-500"></i> Dashboard
+</button>
+<button onclick="switchTab('resources')" class="nav-btn px-3 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition flex items-center gap-2" data-target="resources">
+<i class="fa-solid fa-folder-open text-amber-500"></i> Resource Hub
+</button>
+<button onclick="switchTab('chat')" class="nav-btn px-3 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition flex items-center gap-2 relative" data-target="chat">
+<i class="fa-solid fa-comments text-emerald-500"></i> Study Circles
+<span class="absolute top-1.5 right-1 w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+</button>
+<button onclick="switchTab('ai-tools')" class="nav-btn px-3 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition flex items-center gap-2" data-target="ai-tools">
+<i class="fa-solid fa-wand-magic-sparkles text-purple-500"></i> AI Study Hub
+</button>
+<button onclick="switchTab('buddies')" class="nav-btn px-3 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition flex items-center gap-2" data-target="buddies">
+<i class="fa-solid fa-user-group text-blue-500"></i> Buddy Match
+</button>
+<button onclick="switchTab('calendar')" class="nav-btn px-3 py-2 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition flex items-center gap-2" data-target="calendar">
+<i class="fa-solid fa-calendar-days text-rose-500"></i> Calendar
+</button>
+</nav>
+
+<!-- User Profile Badge & Quick Actions -->
+<div class="flex items-center gap-3">
+<button onclick="toggleDarkMode()" class="p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 transition" title="Toggle Theme">
+<i id="theme-icon" class="fa-solid fa-moon"></i>
+</button>
+
+<div class="flex items-center gap-2 pl-2 border-l border-slate-200 dark:border-slate-700">
+<div class="w-9 h-9 rounded-full bg-gradient-to-tr from-brand-600 to-indigo-500 text-white font-bold flex items-center justify-center text-sm shadow-sm" id="user-avatar-initials">
+SD
+</div>
+<div class="hidden lg:block text-left">
+<div class="text-xs font-bold text-slate-900 dark:text-white truncate max-w-[120px]" id="nav-user-name">Sipho Dlamini</div>
+<div class="text-[10px] text-slate-500 dark:text-slate-400 truncate max-w-[120px]" id="nav-user-inst">UCT • 2nd Year</div>
+</div>
+<button onclick="logoutUser()" class="p-1.5 text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 rounded-lg transition" title="Logout">
+<i class="fa-solid fa-right-from-bracket text-sm"></i>
+</button>
+</div>
+</div>
+</div>
+</header>
+
+<!-- Main Content Area -->
+<main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-24 md:pb-8">
+
+<!-- TAB 1: DASHBOARD -->
+<div id="tab-dashboard" class="tab-content space-y-6 animate-fade-in">
+<!-- Welcome Banner -->
+<div class="bg-gradient-to-r from-brand-600 via-indigo-600 to-purple-600 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="absolute -right-10 -bottom-10 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="space-y-2 z-10 text-center md:text-left">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-medium">
+<i class="fa-solid fa-sparkles text-amber-300"></i> Verified Student Hub
+</div>
+<h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight" id="dash-greeting">Hello, Student! 👋</h2>
+<p class="text-brand-100 text-sm max-w-xl">You are connected with peers across South Africa. 4 new past papers and 12 study notes uploaded in your faculty today.</p>
+</div>
+<div class="flex flex-wrap gap-3 z-10 justify-center">
+<button onclick="openUploadModal()" class="px-5 py-3 bg-white text-brand-700 hover:bg-brand-50 font-bold rounded-2xl shadow-md transition flex items-center gap-2 text-sm">
+<i class="fa-solid fa-cloud-arrow-up text-brand-600"></i> Share Paper / Notes
+</button>
+<button onclick="switchTab('ai-tools')" class="px-5 py-3 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-2xl backdrop-blur-md border border-white/20 transition flex items-center gap-2 text-sm">
+<i class="fa-solid fa-wand-magic-sparkles text-amber-300"></i> Ask EduBot AI
+</button>
+</div>
+</div>
+
+<!-- Quick Stats Grid -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-xs flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl font-bold">
+<i class="fa-solid fa-file-lines"></i>
+</div>
+<div>
+<div class="text-2xl font-bold text-slate-900 dark:text-white" id="stat-papers">1,420</div>
+<div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Past Papers & Notes</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-xs flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl font-bold">
+<i class="fa-solid fa-users"></i>
+</div>
+<div>
+<div class="text-2xl font-bold text-slate-900 dark:text-white" id="stat-circles">38</div>
+<div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Active Study Circles</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-xs flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 flex items-center justify-center text-xl font-bold">
+<i class="fa-solid fa-brain"></i>
+</div>
+<div>
+<div class="text-2xl font-bold text-slate-900 dark:text-white">8,950</div>
+<div class="text-xs text-slate-500 dark:text-slate-400 font-medium">AI Queries Answered</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-xs flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-rose-50 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 flex items-center justify-center text-xl font-bold">
+<i class="fa-solid fa-calendar-check"></i>
+</div>
+<div>
+<div class="text-2xl font-bold text-slate-900 dark:text-white">3</div>
+<div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Upcoming Exams</div>
+</div>
+</div>
+</div>
+
+<!-- Dashboard Main Feed -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+<i class="fa-solid fa-bolt text-amber-500"></i> Trending Campus Resources
+</h3>
+<button onclick="switchTab('resources')" class="text-sm font-semibold text-brand-600 dark:text-brand-400 hover:underline">View All</button>
+</div>
+<div id="dashboard-resources-list" class="space-y-3"></div>
+</div>
+
+<div class="space-y-6">
+<div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-xs space-y-4">
+<div class="flex items-center justify-between">
+<h4 class="font-bold text-slate-900 dark:text-white text-sm flex items-center gap-2">
+<i class="fa-solid fa-clock text-rose-500"></i> Upcoming Deadlines
+</h4>
+<span class="text-xs bg-rose-50 dark:bg-rose-900/40 text-rose-600 dark:text-rose-300 px-2 py-0.5 rounded-full font-bold">Exam Season</span>
+</div>
+<div class="space-y-3" id="dash-deadlines">
+<div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-100 dark:border-slate-700 flex items-start gap-3">
+<div class="bg-rose-100 dark:bg-rose-900/50 text-rose-600 dark:text-rose-400 font-bold px-2.5 py-1.5 rounded-lg text-center text-xs">
+<div class="text-[10px] uppercase">OCT</div>
+<div class="text-base">14</div>
+</div>
+<div class="flex-1">
+<div class="text-xs font-bold text-slate-900 dark:text-white">Financial Accounting 1A Test</div>
+<div class="text-[11px] text-slate-500 dark:text-slate-400">Online assessment • 14:00</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="bg-gradient-to-br from-brand-900 to-indigo-900 p-5 rounded-2xl text-white shadow-md space-y-4">
+<div class="flex items-center justify-between">
+<h4 class="font-bold text-sm flex items-center gap-2">
+<i class="fa-solid fa-user-group text-emerald-400"></i> Study Buddy Radar
+</h4>
+<span class="text-xs bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full font-medium">Online</span>
+</div>
+<p class="text-xs text-slate-300">Connect with students taking your exact modules for study sessions.</p>
+<div class="flex items-center gap-3 pt-1">
+<div class="w-10 h-10 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-sm">KM</div>
+<div class="flex-1 min-w-0">
+<div class="text-xs font-bold truncate">Kgomotso Mokoena</div>
+<div class="text-[11px] text-slate-300 truncate">Taxation 202 • UP</div>
+</div>
+<button onclick="switchTab('buddies')" class="px-3 py-1.5 bg-white text-brand-900 hover:bg-brand-50 rounded-xl text-xs font-bold transition">Connect</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- TAB 2: RESOURCE HUB -->
+<div id="tab-resources" class="tab-content space-y-6 hidden animate-fade-in">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Resource & Past Paper Hub</h2>
+<p class="text-sm text-slate-500 dark:text-slate-400">Browse and share verified notes, assignments, and exam papers across SA institutions.</p>
+</div>
+<button onclick="openUploadModal()" class="px-5 py-3 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-2xl shadow-md transition flex items-center gap-2 text-sm w-fit">
+<i class="fa-solid fa-cloud-arrow-up"></i> Upload Study Material
+</button>
+</div>
+
+<div class="bg-white dark:bg-slate-800 p-4 sm:p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-xs space-y-4">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+<div>
+<label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Search Keywords</label>
+<div class="relative">
+<i class="fa-solid fa-search absolute left-3.5 top-3 text-slate-400 text-sm"></i>
+<input type="text" id="res-search" oninput="filterResources()" placeholder="Module name..." class="w-full pl-10 pr-4 py-2 rounded-xl border border-slate-300 dark:border-slate-600 bg-transparent text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-900 dark:text-white">
+</div>
+</div>
+<div>
+<label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Institution</label>
+<select id="filter-inst" onchange="filterResources()" class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none">
+<option value="">All Institutions</option>
+<option value="University of Pretoria">University of Pretoria</option>
+<option value="University of Johannesburg">University of Johannesburg</option>
+<option value="University of Cape Town">University of Cape Town</option>
+<option value="UKZN">UKZN</option>
+<option value="TUT">TUT</option>
+<option value="UNISA">UNISA</option>
+</select>
+</div>
+<div>
+<label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Faculty</label>
+<select id="filter-faculty" onchange="filterResources()" class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none">
+<option value="">All Faculties</option>
+<option value="Commerce">Commerce</option>
+<option value="Science">Science</option>
+<option value="Engineering">Engineering</option>
+<option value="Law">Law</option>
+<option value="ICT & Tech">ICT & Tech</option>
+</select>
+</div>
+<div>
+<label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Paper Type</label>
+<select id="filter-type" onchange="filterResources()" class="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none">
+<option value="">All Types</option>
+<option value="Exam Paper">Exam Paper</option>
+<option value="Study Notes">Study Notes</option>
+<option value="Assignment">Assignment</option>
+<option value="Memo / Solution">Memo / Solution</option>
+</select>
+</div>
+<div class="flex items-end">
+<button onclick="resetFilters()" class="w-full py-2 px-4 rounded-xl border border-slate-300 dark:border-slate-600 text-sm font-semibold hover:bg-slate-100 dark:hover:bg-slate-700 transition text-slate-600 dark:text-slate-300">
+Reset
+</button>
+</div>
+</div>
+</div>
+
+<div id="resources-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+</div>
+
+<!-- TAB 3: CHAT & STUDY CIRCLES -->
+<div id="tab-chat" class="tab-content space-y-6 hidden animate-fade-in">
+<div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden grid grid-cols-1 md:grid-cols-12 min-h-[620px]">
+<div class="md:col-span-4 border-r border-slate-200 dark:border-slate-700 flex flex-col bg-slate-50/50 dark:bg-slate-800/50">
+<div class="p-4 border-b border-slate-200 dark:border-slate-700 flex items-center justify-between">
+<h3 class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+<i class="fa-solid fa-comments text-emerald-500"></i> Study Circles
+</h3>
+</div>
+<div id="chat-rooms-list" class="flex-1 overflow-y-auto divide-y divide-slate-100 dark:divide-slate-700/50"></div>
+</div>
+<div class="md:col-span-8 flex flex-col bg-white dark:bg-slate-800">
+<div class="p-4 border-b border-slate-200 dark:border-slate-700 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 font-bold flex items-center justify-center text-sm">
+<i class="fa-solid fa-book"></i>
+</div>
+<div>
+<div class="font-bold text-slate-900 dark:text-white text-sm" id="active-room-name">Financial Accounting 1A Group</div>
+<div class="text-[11px] text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> 342 students online
+</div>
+</div>
+</div>
+</div>
+<div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-4 max-h-[440px] bg-slate-50/30 dark:bg-slate-900/20"></div>
+<div class="p-3 border-t border-slate-200 dark:border-slate-700 flex items-center gap-2">
+<button onclick="simulateMediaShare()" class="p-2.5 text-slate-400 hover:text-brand-600 transition" title="Attach PDF"><i class="fa-solid fa-paperclip text-lg"></i></button>
+<input type="text" id="chat-input" onkeypress="handleChatKeypress(event)" placeholder="Type message..." class="flex-1 px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-transparent text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-900 dark:text-white">
+<button onclick="sendChatMessage()" class="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl shadow-md transition text-sm">
+<i class="fa-solid fa-paper-plane"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- TAB 4: AI STUDY HUB -->
+<div id="tab-ai-tools" class="tab-content space-y-6 hidden animate-fade-in">
+<div class="bg-gradient-to-r from-purple-700 via-indigo-700 to-brand-700 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="space-y-2">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-medium">
+<i class="fa-solid fa-wand-magic-sparkles text-amber-300"></i> EduBot AI Assistant
+</div>
+<h2 class="text-2xl sm:text-3xl font-extrabold">Smart Academic Tools</h2>
+<p class="text-purple-100 text-sm max-w-xl">Scan handwritten notes with OCR, summarize lengthy lecture PDFs instantly, or test yourself with auto-generated quizzes.</p>
+</div>
+<div class="flex gap-2">
+<button onclick="setAiMode('chat')" id="btn-mode-chat" class="px-4 py-2.5 rounded-xl bg-white text-purple-900 font-bold text-xs shadow-md transition">EduBot Chat</button>
+<button onclick="setAiMode('ocr')" id="btn-mode-ocr" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs transition">OCR Scanner</button>
+<button onclick="setAiMode('quiz')" id="btn-mode-quiz" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs transition">Quiz Generator</button>
+</div>
+</div>
+
+<div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm p-6">
+<div id="ai-mode-chat" class="space-y-4">
+<div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-700">
+<h3 class="font-bold text-slate-900 dark:text-white flex items-center gap-2 text-base">
+<i class="fa-solid fa-robot text-purple-600"></i> Ask EduBot
+</h3>
+</div>
+<div id="ai-chat-history" class="space-y-3 max-h-[380px] overflow-y-auto p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/40 border border-slate-100 dark:border-slate-700">
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-purple-600 text-white font-bold flex items-center justify-center text-xs">AI</div>
+<div class="bg-white dark:bg-slate-800 p-3 rounded-2xl border border-slate-200 dark:border-slate-700 text-sm max-w-lg shadow-xs">
+Hello! I am EduBot. Ask me to summarize a contract law case, explain South African tax calculations, or break down formulas!
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-2">
+<input type="text" id="ai-query-input" onkeypress="handleAiKeypress(event)" placeholder="e.g. Summarize the principles of the Law of Contracts in SA..." class="flex-1 px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-transparent text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 text-slate-900 dark:text-white">
+<button onclick="sendAiQuery()" class="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl shadow-md transition text-sm">
+Ask AI
+</button>
+</div>
+</div>
+
+<div id="ai-mode-ocr" class="space-y-4 hidden">
+<div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-700">
+<h3 class="font-bold text-slate-900 dark:text-white flex items-center gap-2 text-base">
+<i class="fa-solid fa-file-image text-emerald-600"></i> Handwritten Notes OCR Scanner
+</h3>
+</div>
+<div class="border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-2xl p-8 text-center space-y-3 bg-slate-50 dark:bg-slate-900/30">
+<div class="w-16 h-16 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto text-2xl">
+<i class="fa-solid fa-camera-retro"></i>
+</div>
+<h4 class="font-bold text-slate-900 dark:text-white text-sm">Upload photo of lecture notes or whiteboard</h4>
+<button onclick="simulateOcrScan()" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs transition">
+Select Image & Extract Text
+</button>
+</div>
+<div id="ocr-result-box" class="hidden space-y-2 p-4 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-200">
+<p id="ocr-text-output" class="text-xs text-slate-600 dark:text-slate-300 font-mono bg-white dark:bg-slate-800 p-3 rounded-lg"></p>
+</div>
+</div>
+
+<div id="ai-mode-quiz" class="space-y-4 hidden">
+<div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-700">
+<h3 class="font-bold text-slate-900 dark:text-white flex items-center gap-2 text-base">
+<i class="fa-solid fa-puzzle-piece text-amber-500"></i> Auto-Generate Practice Quiz
+</h3>
+</div>
+<button onclick="generateQuiz()" class="px-5 py-2.5 bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-xl text-xs transition">
+Generate Quiz Now
+</button>
+<div id="quiz-container" class="space-y-4 pt-2"></div>
+</div>
+</div>
+</div>
+
+<!-- TAB 5: STUDY BUDDY MATCH -->
+<div id="tab-buddies" class="tab-content space-y-6 hidden animate-fade-in">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Study Buddy Matcher</h2>
+<p class="text-sm text-slate-500 dark:text-slate-400">Find classmates taking your exact modules for library study sessions.</p>
+</div>
+</div>
+<div id="buddies-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+</div>
+
+<!-- TAB 6: CALENDAR -->
+<div id="tab-calendar" class="tab-content space-y-6 hidden animate-fade-in">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Academic Calendar & Reminders</h2>
+<p class="text-sm text-slate-500 dark:text-slate-400">Track tests, exam timetables, and personal deadlines.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 bg-white dark:bg-slate-800 p-6 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
+<h3 class="font-bold text-slate-900 dark:text-white text-base">October 2026 Examination Schedule</h3>
+<div class="grid grid-cols-7 gap-2 text-center text-xs font-bold text-slate-400 pb-2 border-b">
+<div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div><div>Sun</div>
+</div>
+<div class="grid grid-cols-7 gap-2 text-center text-xs font-medium" id="calendar-days-grid"></div>
+</div>
+<div class="bg-white dark:bg-slate-800 p-6 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
+<h3 class="font-bold text-slate-900 dark:text-white text-base flex items-center gap-2">
+<i class="fa-solid fa-bell text-rose-500"></i> My Reminders
+</h3>
+<div id="reminders-list" class="space-y-3"></div>
+</div>
+</div>
+</div>
+
+</main>
+</div>
+
+<!-- UPLOAD RESOURCE MODAL -->
+<div id="upload-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 backdrop-blur-sm p-4 hidden">
+<div class="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl w-full max-w-lg border border-slate-200 dark:border-slate-700 overflow-hidden animate-fade-in">
+<div class="p-6 bg-gradient-to-r from-brand-600 to-indigo-600 text-white flex items-center justify-between">
+<h3 class="font-bold text-lg flex items-center gap-2"><i class="fa-solid fa-cloud-arrow-up"></i> Share Study Material</h3>
+<button onclick="closeUploadModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white"><i class="fa-solid fa-xmark"></i></button>
+</div>
+<form id="upload-form" onsubmit="handleResourceUpload(event)" class="p-6 space-y-4">
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase mb-1">Resource Title *</label>
+<input type="text" id="up-title" required placeholder="e.g. Accounting 2A Exam Memo" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-transparent text-sm focus:ring-2 focus:ring-brand-500 text-slate-900 dark:text-white">
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase mb-1">Institution *</label>
+<select id="up-inst" required class="w-full px-3 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-xs text-slate-900 dark:text-white">
+<option value="University of Cape Town">University of Cape Town</option>
+<option value="University of Pretoria">University of Pretoria</option>
+<option value="University of Johannesburg">University of Johannesburg</option>
+<option value="UKZN">UKZN</option>
+<option value="UNISA">UNISA</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase mb-1">Paper Type *</label>
+<select id="up-type" required class="w-full px-3 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-xs text-slate-900 dark:text-white">
+<option value="Exam Paper">Exam Paper</option>
+<option value="Study Notes">Study Notes</option>
+<option value="Assignment">Assignment</option>
+<option value="Memo / Solution">Memo / Solution</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase mb-1">Module Code *</label>
+<input type="text" id="up-module" required placeholder="e.g. TAX201F" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-transparent text-sm focus:ring-2 focus:ring-brand-500 text-slate-900 dark:text-white">
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase mb-1">Select File *</label>
+<input type="file" id="up-file" required class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-brand-50 file:text-brand-700">
+</div>
+<div class="flex justify-end gap-3 pt-4">
+<button type="button" onclick="closeUploadModal()" class="px-4 py-2.5 rounded-xl border border-slate-300 text-xs font-bold text-slate-600">Cancel</button>
+<button type="submit" class="px-6 py-2.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-xl shadow-md">Upload & Publish</button>
+</div>
+</form>
+</div>
+</div>
+
+<!-- JavaScript Application Core -->
+<script>
+// Mock State Data
+let currentUser = JSON.parse(localStorage.getItem('educircle_user')) || null;
+
+let resources = JSON.parse(localStorage.getItem('educircle_resources')) || [
+{ id: 1, title: 'Financial Accounting 2A Exam Paper & Memo', inst: 'University of Johannesburg', faculty: 'Commerce', type: 'Exam Paper', module: 'ACC201', author: 'Lerato Khumalo', upvotes: 48, comments: 12, date: '2026-05-14' },
+{ id: 2, title: 'Law of Contracts Comprehensive Lecture Notes', inst: 'University of Pretoria', faculty: 'Law', type: 'Study Notes', module: 'LAWS202', author: 'Francois van Wyk', upvotes: 35, comments: 8, date: '2026-08-20' },
+{ id: 3, title: 'Engineering Mathematics 2 Past Paper 2023', inst: 'University of Cape Town', faculty: 'Engineering', type: 'Exam Paper', module: 'MAM2000W', author: 'Sipho Dlamini', upvotes: 62, comments: 19, date: '2026-09-02' },
+{ id: 4, title: 'Python Programming Practical Assignment 1', inst: 'UNISA', faculty: 'ICT & Tech', type: 'Assignment', module: 'ICT1512', author: 'Zanele Mthembu', upvotes: 29, comments: 5, date: '2026-09-15' }
+];
+
+let chatRooms = [
+{ id: 'room-1', name: 'Financial Accounting 1A', inst: 'UJ / UP / UCT', unread: 3, icon: 'fa-calculator' },
+{ id: 'room-2', name: 'Law of Contracts Study Circle', inst: 'All Universities', unread: 0, icon: 'fa-scale-balanced' },
+{ id: 'room-3', name: 'Engineering Maths 2 Help', inst: 'Wits & UCT', unread: 7, icon: 'fa-square-root-variable' },
+{ id: 'room-4', name: 'BSc Computer Science Peer Chat', inst: 'National', unread: 0, icon: 'fa-code' }
+];
+
+let activeChatRoomId = 'room-1';
+let chatMessagesData = {
+    'room-1': [
+    { sender: 'Lerato Khumalo', text: 'Hey everyone, does anyone have the solution to Question 3 on inventory valuation?', time: '14:20', self: false },
+    { sender: 'Sipho Dlamini', text: 'Yes! I just uploaded the memo to the resource hub. Check it out.', time: '14:22', self: true },
+    { sender: 'Kgomotso Mokoena', text: 'Legend! That question was tricky. Thanks Sipho.', time: '14:25', self: false }
+    ],
+    'room-2': [{ sender: 'Francois van Wyk', text: 'Are we meeting at the library at 10 AM tomorrow?', time: 'Yesterday', self: false }],
+    'room-3': [],
+    'room-4': []
+};
+
+let buddies = [
+{ name: 'Kgomotso Mokoena', inst: 'University of Pretoria', module: 'Taxation 202', province: 'Gauteng', online: true, initials: 'KM' },
+{ name: 'Francois van Wyk', inst: 'University of Cape Town', module: 'Law of Contracts', province: 'Western Cape', online: true, initials: 'FV' },
+{ name: 'Zanele Mthembu', inst: 'UKZN', module: 'Computer Science 2', province: 'KwaZulu-Natal', online: false, initials: 'ZM' }
+];
+
+let reminders = [
+{ title: 'Financial Accounting 1A Test', date: '14 Oct 2026', type: 'Test' },
+{ title: 'Law of Contracts Assignment Due', date: '21 Oct 2026', type: 'Assignment' },
+{ title: 'Maths 2 Revision Marathon', date: '28 Oct 2026', type: 'Zoom' }
+];
+
+// Initialization on window load
+window.onload = function() {
+    if (!currentUser) {
+        showWelcomePage();
+    } else {
+        initApp();
+    }
+};
+
+function showWelcomePage() {
+    document.getElementById('welcome-page').classList.remove('hidden');
+    document.getElementById('app-container').classList.add('hidden');
+}
+
+function openLoginModal() {
+    document.getElementById('login-modal').classList.remove('hidden');
+}
+function closeLoginModal() {
+    document.getElementById('login-modal').classList.add('hidden');
+}
+
+function openRegisterModal() {
+    document.getElementById('onboarding-modal').classList.remove('hidden');
+}
+function closeRegisterModal() {
+    document.getElementById('onboarding-modal').classList.add('hidden');
+}
+
+function switchToRegisterFromLogin() {
+    closeLoginModal();
+    openRegisterModal();
+}
+
+function handleLogin(e) {
+    e.preventDefault();
+    const contact = document.getElementById('login-contact').value;
+    currentUser = {
+        name: contact.split('@')[0] || 'Student User',
+        contact: contact,
+        province: 'Gauteng',
+        institution: 'University of Johannesburg',
+        faculty: 'Commerce',
+        course: 'BCom General',
+        year: '2nd Year'
+    };
+    localStorage.setItem('educircle_user', JSON.stringify(currentUser));
+    closeLoginModal();
+    document.getElementById('welcome-page').classList.add('hidden');
+    initApp();
+    showToast('Welcome back to EduCircle!');
+}
+
+function logoutUser() {
+    localStorage.removeItem('educircle_user');
+    currentUser = null;
+    showWelcomePage();
+    showToast('Logged out successfully.');
+}
+
+function nextOnboardingStep(step) {
+    if (step === 2) {
+        const name = document.getElementById('reg-name').value.trim();
+        const contact = document.getElementById('reg-contact').value.trim();
+        const pass = document.getElementById('reg-pass').value.trim();
+        const province = document.getElementById('reg-province').value;
+        if (!name || !contact || !pass || !province) {
+            showToast('Please fill in all personal details first.');
+            return;
+        }
+        document.getElementById('step-1').classList.add('hidden');
+        document.getElementById('step-2').classList.remove('hidden');
+    } else {
+        document.getElementById('step-2').classList.add('hidden');
+        document.getElementById('step-1').classList.remove('hidden');
+    }
+}
+
+// Fix submission handling for complete profile button
+document.getElementById('onboarding-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const institution = document.getElementById('reg-institution').value;
+    const faculty = document.getElementById('reg-faculty').value;
+    const course = document.getElementById('reg-course').value.trim();
+    const year = document.getElementById('reg-year').value;
+
+    if (!institution || !faculty || !course || !year) {
+        showToast('Please fill in all academic details.');
+        return;
+    }
+
+    currentUser = {
+        name: document.getElementById('reg-name').value.trim(),
+        contact: document.getElementById('reg-contact').value.trim(),
+        province: document.getElementById('reg-province').value,
+        institution: institution,
+        faculty: faculty,
+        course: course,
+        year: year
+    };
+
+    localStorage.setItem('educircle_user', JSON.stringify(currentUser));
+    closeRegisterModal();
+    initApp();
+    showToast('Welcome to EduCircle! Profile created successfully.');
+});
+
+function initApp() {
+    document.getElementById('welcome-page').classList.add('hidden');
+    document.getElementById('app-container').classList.remove('hidden');
+
+    document.getElementById('nav-user-name').innerText = currentUser.name;
+    document.getElementById('nav-user-inst').innerText = `${currentUser.institution} • ${currentUser.year}`;
+
+    const initials = currentUser.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+    document.getElementById('user-avatar-initials').innerText = initials;
+    document.getElementById('dash-greeting').innerText = `Hello, ${currentUser.name.split(' ')[0]}! 👋`;
+
+    renderDashboardResources();
+    renderResourcesGrid();
+    renderChatRooms();
+    renderChatMessages();
+    renderBuddies();
+    renderCalendar();
+    renderReminders();
+}
+
+function switchTab(tabId) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+    document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('bg-slate-100', 'dark:bg-slate-700', 'text-brand-600');
+        if (btn.getAttribute('data-target') === tabId) {
+            btn.classList.add('bg-slate-100', 'dark:bg-slate-700', 'text-brand-600');
+        }
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderDashboardResources() {
+    const container = document.getElementById('dashboard-resources-list');
+    container.innerHTML = resources.slice(0, 3).map(r => `
+    <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-xs flex items-center justify-between gap-4">
+    <div class="flex items-start gap-3">
+    <div class="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-900/50 text-brand-600 dark:text-brand-400 font-bold flex items-center justify-center text-sm shrink-0">
+    <i class="fa-solid fa-file-pdf"></i>
+    </div>
+    <div>
+    <div class="text-sm font-bold text-slate-900 dark:text-white">${r.title}</div>
+    <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">${r.inst} • <span class="text-brand-600 font-medium">${r.module}</span> • ${r.type}</div>
+    </div>
+    </div>
+    <button onclick="downloadResource(${r.id})" class="px-3.5 py-2 bg-brand-50 hover:bg-brand-100 dark:bg-brand-900/40 text-brand-600 dark:text-brand-300 font-bold rounded-xl text-xs transition flex items-center gap-1.5 shrink-0">
+    <i class="fa-solid fa-download"></i> Download
+    </button>
+    </div>
+    `).join('');
+}
+
+function renderResourcesGrid(filtered = resources) {
+    const container = document.getElementById('resources-grid');
+    if (filtered.length === 0) {
+        container.innerHTML = `<div class="col-span-3 text-center py-12 text-slate-400">No resources match your search criteria.</div>`;
+        return;
+    }
+    container.innerHTML = filtered.map(r => `
+    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-xs flex flex-col justify-between space-y-4">
+    <div class="space-y-2">
+    <div class="flex items-center justify-between">
+    <span class="text-[10px] font-bold px-2.5 py-1 rounded-md bg-brand-50 dark:bg-brand-900/50 text-brand-600 dark:text-brand-300">${r.type}</span>
+    <span class="text-xs text-slate-400">${r.date}</span>
+    </div>
+    <h3 class="font-bold text-slate-900 dark:text-white text-sm">${r.title}</h3>
+    <div class="text-xs text-slate-500 dark:text-slate-400">${r.inst} • <span class="font-semibold text-brand-600">${r.module}</span></div>
+    </div>
+    <div class="pt-3 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between">
+    <div class="flex items-center gap-3 text-xs text-slate-500">
+    <button onclick="upvoteResource(${r.id})" class="flex items-center gap-1 hover:text-brand-600 font-medium"><i class="fa-solid fa-thumbs-up"></i> ${r.upvotes}</button>
+    <span><i class="fa-solid fa-comment"></i> ${r.comments}</span>
+    </div>
+    <button onclick="downloadResource(${r.id})" class="px-3 py-1.5 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl text-xs transition flex items-center gap-1">
+    Get File
+    </button>
+    </div>
+    </div>
+    `).join('');
+}
+
+function filterResources() {
+    const query = document.getElementById('res-search').value.toLowerCase();
+    const inst = document.getElementById('filter-inst').value;
+    const faculty = document.getElementById('filter-faculty').value;
+    const type = document.getElementById('filter-type').value;
+
+    const filtered = resources.filter(r => {
+        const matchQuery = r.title.toLowerCase().includes(query) || r.module.toLowerCase().includes(query);
+        const matchInst = !inst || r.inst === inst;
+        const matchFaculty = !faculty || r.faculty === faculty;
+        const matchType = !type || r.type === type;
+        return matchQuery && matchInst && matchFaculty && matchType;
+    });
+    renderResourcesGrid(filtered);
+}
+
+function resetFilters() {
+    document.getElementById('res-search').value = '';
+    document.getElementById('filter-inst').value = '';
+    document.getElementById('filter-faculty').value = '';
+    document.getElementById('filter-type').value = '';
+    renderResourcesGrid(resources);
+}
+
+function upvoteResource(id) {
+    const r = resources.find(x => x.id === id);
+    if (r) {
+        r.upvotes++;
+        localStorage.setItem('educircle_resources', JSON.stringify(resources));
+        renderResourcesGrid();
+        renderDashboardResources();
+        showToast('Resource upvoted!');
+    }
+}
+
+function downloadResource(id) {
+    showToast('Simulating secure download... File saved!');
+}
+
+function renderChatRooms() {
+    const container = document.getElementById('chat-rooms-list');
+    container.innerHTML = chatRooms.map(room => `
+    <div onclick="selectChatRoom('${room.id}')" class="p-3.5 flex items-center gap-3 cursor-pointer transition ${activeChatRoomId === room.id ? 'bg-brand-50 dark:bg-brand-900/30 border-l-4 border-brand-600' : 'hover:bg-slate-100 dark:hover:bg-slate-700/50'}">
+    <div class="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 font-bold flex items-center justify-center text-sm shrink-0">
+    <i class="fa-solid ${room.icon}"></i>
+    </div>
+    <div class="flex-1 min-w-0">
+    <div class="flex items-center justify-between">
+    <h4 class="text-xs font-bold text-slate-900 dark:text-white truncate">${room.name}</h4>
+    ${room.unread > 0 ? `<span class="bg-brand-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">${room.unread}</span>` : ''}
+    </div>
+    <div class="text-[11px] text-slate-500 dark:text-slate-400 truncate">${room.inst}</div>
+    </div>
+    </div>
+    `).join('');
+}
+
+function selectChatRoom(id) {
+    activeChatRoomId = id;
+    const room = chatRooms.find(r => r.id === id);
+    document.getElementById('active-room-name').innerText = room.name;
+    room.unread = 0;
+    renderChatRooms();
+    renderChatMessages();
+}
+
+function renderChatMessages() {
+    const container = document.getElementById('chat-messages');
+    const messages = chatMessagesData[activeChatRoomId] || [];
+    if (messages.length === 0) {
+        container.innerHTML = `<div class="text-center py-16 text-slate-400 text-xs">No messages yet. Start the conversation!</div>`;
+        return;
+    }
+    container.innerHTML = messages.map(m => `
+    <div class="flex flex-col ${m.self ? 'items-end' : 'items-start'}">
+    <div class="text-[10px] text-slate-400 mb-1 px-1">${m.sender} • ${m.time}</div>
+    <div class="max-w-md px-4 py-2.5 rounded-2xl text-xs leading-relaxed ${m.self ? 'bg-brand-600 text-white rounded-br-xs' : 'bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-slate-700 rounded-bl-xs shadow-xs'}">
+    ${m.text}
+    </div>
+    </div>
+    `).join('');
+    container.scrollTop = container.scrollHeight;
+}
+
+function sendChatMessage() {
+    const input = document.getElementById('chat-input');
+    const text = input.value.trim();
+    if (!text) return;
+
+    if (!chatMessagesData[activeChatRoomId]) chatMessagesData[activeChatRoomId] = [];
+    const now = new Date();
+    const timeStr = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+
+    chatMessagesData[activeChatRoomId].push({ sender: currentUser.name, text: text, time: timeStr, self: true });
+    input.value = '';
+    renderChatMessages();
+}
+
+function handleChatKeypress(e) {
+    if (e.key === 'Enter') sendChatMessage();
+}
+
+function simulateMediaShare() {
+    if (!chatMessagesData[activeChatRoomId]) chatMessagesData[activeChatRoomId] = [];
+    chatMessagesData[activeChatRoomId].push({ sender: currentUser.name, text: '📄 [Shared PDF Document: Lecture_Notes.pdf]', time: 'Just now', self: true });
+    renderChatMessages();
+    showToast('Document shared to study circle.');
+}
+
+function setAiMode(mode) {
+    ['chat', 'ocr', 'quiz'].forEach(m => {
+        document.getElementById(`ai-mode-${m}`).classList.add('hidden');
+        document.getElementById(`btn-mode-${m}`).className = 'px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs transition';
+    });
+    document.getElementById(`ai-mode-${mode}`).classList.remove('hidden');
+    document.getElementById(`btn-mode-${mode}`).className = 'px-4 py-2.5 rounded-xl bg-white text-purple-900 font-bold text-xs shadow-md transition';
+}
+
+function sendAiQuery() {
+    const input = document.getElementById('ai-query-input');
+    const q = input.value.trim();
+    if (!q) return;
+    const history = document.getElementById('ai-chat-history');
+    history.innerHTML += `
+    <div class="flex items-start justify-end gap-3">
+    <div class="bg-purple-600 text-white p-3 rounded-2xl text-sm max-w-lg shadow-xs">${q}</div>
+    <div class="w-8 h-8 rounded-full bg-slate-700 text-white font-bold flex items-center justify-center text-xs">You</div>
+    </div>
+    `;
+    input.value = '';
+    setTimeout(() => {
+        history.innerHTML += `
+        <div class="flex items-start gap-3">
+        <div class="w-8 h-8 rounded-full bg-purple-600 text-white font-bold flex items-center justify-center text-xs">AI</div>
+        <div class="bg-white dark:bg-slate-800 p-3 rounded-2xl border border-slate-200 dark:border-slate-700 text-sm max-w-lg shadow-xs text-slate-800 dark:text-slate-100">Based on South African academic guidelines for ${q}, key principles include compliance with relevant acts and analytical structuring.</div>
+        </div>
+        `;
+        history.scrollTop = history.scrollHeight;
+    }, 600);
+}
+
+function handleAiKeypress(e) {
+    if (e.key === 'Enter') sendAiQuery();
+}
+
+function simulateOcrScan() {
+    document.getElementById('ocr-result-box').classList.remove('hidden');
+    document.getElementById('ocr-text-output').innerText = "CHAPTER 4: PARTNERSHIP LAW IN SOUTH AFRICA\n- Partnership is a legal relationship between two or more persons.\n- Mutual mandate applies: each partner is an agent.";
+    showToast('OCR extraction completed successfully!');
+}
+
+function generateQuiz() {
+    const container = document.getElementById('quiz-container');
+    container.innerHTML = `
+    <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 space-y-3">
+    <div class="text-xs font-bold text-slate-900 dark:text-white">Q1: Which of the following is required for a valid contract?</div>
+    <div class="space-y-2 text-xs">
+    <label class="flex items-center gap-2 p-2 rounded-lg bg-white dark:bg-slate-800 border cursor-pointer"><input type="radio" name="q1"> Consensus between parties</label>
+    </div>
+    <button onclick="showToast('Correct!')" class="px-4 py-2 bg-purple-600 text-white font-bold rounded-xl text-xs">Submit</button>
+    </div>
+    `;
+    showToast('Quiz generated!');
+}
+
+function renderBuddies() {
+    const container = document.getElementById('buddies-grid');
+    container.innerHTML = buddies.map(b => `
+    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-xs flex flex-col justify-between space-y-4">
+    <div class="flex items-start gap-3">
+    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-brand-600 to-indigo-600 text-white font-bold flex items-center justify-center text-sm shrink-0">${b.initials}</div>
+    <div>
+    <div class="font-bold text-slate-900 dark:text-white text-sm">${b.name}</div>
+    <div class="text-xs text-slate-500">${b.inst}</div>
+    <div class="text-xs text-brand-600 font-semibold mt-1">${b.module}</div>
+    </div>
+    </div>
+    <div class="pt-3 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between">
+    <span class="text-xs text-slate-400"><i class="fa-solid fa-location-dot text-rose-500"></i> ${b.province}</span>
+    <button onclick="showToast('Request sent to ${b.name}!')" class="px-3.5 py-1.5 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl text-xs transition">Connect</button>
+    </div>
+    </div>
+    `).join('');
+}
+
+function renderCalendar() {
+    const container = document.getElementById('calendar-days-grid');
+    let html = '';
+    for (let i = 1; i <= 31; i++) {
+        const isExam = [14, 21, 28].includes(i);
+        html += `<div class="p-2.5 rounded-xl border ${isExam ? 'bg-rose-50 dark:bg-rose-900/40 border-rose-300 text-rose-600 font-bold' : 'border-slate-100 dark:border-slate-700 text-slate-700 dark:text-slate-300'} flex flex-col items-center justify-center">
+        <span>${i}</span>
+        ${isExam ? '<span class="w-1.5 h-1.5 rounded-full bg-rose-500 mt-1"></span>' : ''}
+        </div>`;
+    }
+    container.innerHTML = html;
+}
+
+function renderReminders() {
+    const container = document.getElementById('reminders-list');
+    container.innerHTML = reminders.map(r => `
+    <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 flex items-center justify-between">
+    <div>
+    <div class="text-xs font-bold text-slate-900 dark:text-white">${r.title}</div>
+    <div class="text-[11px] text-slate-500">${r.date}</div>
+    </div>
+    <span class="text-[10px] px-2 py-1 rounded-lg bg-rose-100 dark:bg-rose-900/50 text-rose-600 dark:text-rose-300 font-bold">${r.type}</span>
+    </div>
+    `).join('');
+}
+
+function openUploadModal() { document.getElementById('upload-modal').classList.remove('hidden'); }
+function closeUploadModal() { document.getElementById('upload-modal').classList.add('hidden'); }
+
+function handleResourceUpload(e) {
+    e.preventDefault();
+    const newRes = {
+        id: resources.length + 1,
+        title: document.getElementById('up-title').value,
+        inst: document.getElementById('up-inst').value,
+        faculty: currentUser.faculty,
+        type: document.getElementById('up-type').value,
+        module: document.getElementById('up-module').value.toUpperCase(),
+        author: currentUser.name,
+        upvotes: 1,
+        comments: 0,
+        date: new Date().toISOString().split('T')[0]
+    };
+    resources.unshift(newRes);
+    localStorage.setItem('educircle_resources', JSON.stringify(resources));
+    closeUploadModal();
+    renderDashboardResources();
+    renderResourcesGrid();
+    showToast('Resource uploaded & published successfully!');
+}
+
+function showToast(msg) {
+    const toast = document.createElement('div');
+    toast.className = 'fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-2xl text-xs font-bold animate-fade-in border border-slate-700';
+    toast.innerText = msg;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+}
+
+function toggleDarkMode() {
+    const html = document.documentElement;
+    const icon = document.getElementById('theme-icon');
+    if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        icon.className = 'fa-solid fa-moon';
+    } else {
+        html.classList.add('dark');
+        icon.className = 'fa-solid fa-sun';
+    }
+}
+</script>
+</body>
+</html>
